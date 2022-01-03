@@ -1,15 +1,17 @@
 // Externes
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Internes
 
 // CSS
 import "./Games.css";
 
-const Games = () => {
+const Games = (id) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,7 +36,12 @@ const Games = () => {
       {data.results.map((elem) => {
         return (
           <section key={elem.id} className="games-bloc">
-            <article className="games-item">
+            <article
+              onClick={() => {
+                navigate(`/games/${elem.id}`);
+              }}
+              className="games-item"
+            >
               <img
                 src={elem.background_image}
                 alt="couverture ou extrait du jeu"
