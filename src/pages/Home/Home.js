@@ -1,7 +1,7 @@
 // Externes
 
 // Internes
-import Games from "../../components/Cards/Games";
+import GamesCards from "../../components/GamesCards/GamesCards";
 
 // CSS
 import "./Home.css";
@@ -9,7 +9,7 @@ import "./Home.css";
 const Home = () => {
   return (
     <main>
-      <Games />
+      <GamesCards />
     </main>
   );
 };

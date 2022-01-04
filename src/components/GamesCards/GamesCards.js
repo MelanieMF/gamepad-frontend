@@ -6,9 +6,9 @@ import { useNavigate } from "react-router-dom";
 // Internes
 
 // CSS
-import "./Games.css";
+import "./GamesCards.css";
 
-const Games = (id) => {
+const GamesCards = (id) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
@@ -42,10 +42,7 @@ const Games = (id) => {
               }}
               className="games-item"
             >
-              <img
-                src={elem.background_image}
-                alt="couverture ou extrait du jeu"
-              />
+              <img src={elem.background_image} alt="couverture du jeu" />
               <h1>{elem.name}</h1>
             </article>
           </section>
@@ -55,4 +52,4 @@ const Games = (id) => {
   );
 };
 
-export default Games;
+export default GamesCards;

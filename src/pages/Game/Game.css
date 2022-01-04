@@ -1,0 +1,66 @@
+main {
+  width: 1440px;
+  margin: 0 auto;
+}
+
+h3 {
+  margin: 8px 0;
+}
+
+.global-container {
+  border: 1px solid red;
+  display: flex;
+  /* align-items: center; */
+}
+
+.global-container img {
+  width: 700px;
+  border-radius: 10px;
+}
+
+.picture-container {
+  width: 50%;
+}
+
+.informations-container {
+  border: 1px solid yellow;
+  margin-left: 30px;
+}
+
+.button-container button:last-child {
+  margin-left: 30px;
+}
+
+.game-button {
+  height: 70px;
+  background-color: #202023;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.details-container {
+  border: 1px solid green;
+  display: flex;
+}
+
+.flex-section > div {
+  border: 1px solid salmon;
+}
+
+.flex-section > div:first-child {
+  width: 330px;
+}
+
+/* span {
+  border: 1px solid red;
+} */
+
+.game-description {
+  border: 1px solid blue;
+  height: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: wrap;
+}
