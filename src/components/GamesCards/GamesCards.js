@@ -17,7 +17,8 @@ const GamesCards = (id) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://api.rawg.io/api/games?key=ee7acd3aea974d95b29d55f9c60f5960"
+          // "https://api.rawg.io/api/games?key=ee7acd3aea974d95b29d55f9c60f5960"
+          "http://localhost:4000/"
         );
         setData(response.data);
         console.log(response.data);

@@ -15,7 +15,7 @@ const Header = () => {
         <Link to="/favoris" className="nav-items">
           My collection
         </Link>
-        <Link to="/connexion" className="nav-items">
+        <Link to="/login" className="nav-items">
           Login
         </Link>
       </section>

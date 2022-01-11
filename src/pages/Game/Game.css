@@ -3,6 +3,8 @@ main {
   margin: 0 auto;
 }
 
+/* DETAILS GAME SECTION */
+
 h3 {
   margin: 8px 0;
 }
@@ -63,4 +65,56 @@ h3 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: wrap;
+}
+
+/* SIMILAR GAMES SECTION */
+
+.similar-game-container {
+  border: 1px solid red;
+  display: flex;
+  overflow: hidden;
+  overflow-x: scroll;
+  /* justify-content: center; */
+}
+
+.similar-game-item {
+  position: relative;
+}
+
+.similar-game-item:not(:first-child) {
+  border: 1px solid green;
+  margin-left: 20px;
+}
+
+.similar-game-item img {
+  object-fit: cover;
+  height: 350px;
+  width: 250px;
+  border-radius: 5px;
+}
+
+.similar-game-picture-shadowone {
+  height: 150px;
+  width: 250px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(32, 32, 32, 0), rgba(32, 32, 32, 0.5));
+}
+
+.similar-game-picture-shadowtwo {
+  height: 120px;
+  width: 250px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(32, 32, 32, 0.1), rgba(32, 32, 32, 1));
+}
+
+.title-similar-game {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
 }
