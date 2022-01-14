@@ -5,11 +5,17 @@ import Cookies from "js-cookie";
 
 // Internes
 import Header from "./components/Header/Header";
-import Login from "./components/Login/Login";
 import Home from "./pages/Home/Home";
 import Game from "./pages/Game/Game";
-import "./App.css";
 import SignUp from "./components/SignUp/SignUp";
+import Login from "./components/Login/Login";
+import Favoris from "./pages/Favoris/Favoris";
+
+// Styles & CSS
+import "./App.css";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faSearch, faHeart } from "@fortawesome/free-solid-svg-icons";
+library.add(faSearch, faHeart);
 
 function App() {
   const [token, setToken] = useState(Cookies.get("userToken") || null);
@@ -26,12 +32,13 @@ function App() {
   return (
     <div>
       <Router>
-        <Header />
+        <Header token={token} setUser={setUser} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home token={token} />} />
           <Route path="/games/:id" element={<Game />} />
           <Route path="login" element={<Login setUser={setUser} />} />
           <Route path="signup" element={<SignUp setUser={setUser} />} />
+          <Route path="/favoris" element={<Favoris token={token} />} />
         </Routes>
       </Router>
     </div>

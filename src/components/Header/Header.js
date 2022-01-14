@@ -1,25 +1,58 @@
-import { Link } from "react-router-dom";
-import logo from "../../assets/img/logo.png";
-import "../Header/Header.css";
+// Externes
+import { useNavigate } from "react-router-dom";
 
-const Header = () => {
+// Internes
+import logo from "../../assets/img/logo.png";
+
+// CSS
+import "./Header.css";
+
+const Header = ({ token, setUser }) => {
+  const navigate = useNavigate();
   // ee7acd3aea974d95b29d55f9c60f5960;
   return (
-    <div className="header">
+    <nav className="header">
       <div>
-        <Link to="/">
-          <img src={logo} alt="logo" />
-        </Link>
+        <img
+          src={logo}
+          alt="logo"
+          onClick={() => {
+            navigate("/");
+          }}
+        />
       </div>
-      <section className="nav">
-        <Link to="/favoris" className="nav-items">
+      <section>
+        <button
+          className="nav"
+          onClick={() => {
+            navigate("/favoris");
+          }}
+        >
           My collection
-        </Link>
-        <Link to="/login" className="nav-items">
-          Login
-        </Link>
+        </button>
+
+        {token ? (
+          <button
+            className="logout"
+            onClick={() => {
+              setUser(null);
+              navigate("/");
+            }}
+          >
+            Logout
+          </button>
+        ) : (
+          <button
+            className="nav"
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            Login
+          </button>
+        )}
       </section>
-    </div>
+    </nav>
   );
 };
 

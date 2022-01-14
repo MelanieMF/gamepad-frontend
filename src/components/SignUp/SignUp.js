@@ -1,7 +1,7 @@
 // Externes
 import axios from "axios";
 import { useState } from "react";
-import { navigate, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 // Internes
 import Dropzone from "../Dropzone/Dropzone";

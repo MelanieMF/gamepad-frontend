@@ -1,7 +1,7 @@
 // Externes
 import axios from "axios";
 import { useState } from "react";
-import { Navigate, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 // Internes
 
@@ -11,8 +11,6 @@ import "./Login.css";
 const Login = ({ setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
