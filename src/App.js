@@ -14,8 +14,14 @@ import Favoris from "./pages/Favoris/Favoris";
 // Styles & CSS
 import "./App.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSearch, faHeart } from "@fortawesome/free-solid-svg-icons";
-library.add(faSearch, faHeart);
+import {
+  faSearch,
+  faHeart,
+  faBookmark,
+  faCommentAlt,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
+library.add(faSearch, faHeart, faBookmark, faCommentAlt, faTimes);
 
 function App() {
   const [token, setToken] = useState(Cookies.get("userToken") || null);
@@ -35,7 +41,7 @@ function App() {
         <Header token={token} setUser={setUser} />
         <Routes>
           <Route path="/" element={<Home token={token} />} />
-          <Route path="/games/:id" element={<Game />} />
+          <Route path="/games/:id" element={<Game token={token} />} />
           <Route path="login" element={<Login setUser={setUser} />} />
           <Route path="signup" element={<SignUp setUser={setUser} />} />
           <Route path="/favoris" element={<Favoris token={token} />} />

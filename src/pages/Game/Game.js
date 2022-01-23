@@ -7,12 +7,35 @@ import { useParams } from "react-router-dom";
 
 // CSS
 import "./Game.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ReviewModal from "../../components/ReviewModal/ReviewModal";
 
-const Game = () => {
+const Game = ({ token }) => {
   const [game, setGame] = useState();
   const [similarGames, setSimilarGames] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
+
+  const addFavorite = async () => {
+    try {
+      const response = await axios.post(
+        `http://localhost:4000/add/favorites`,
+        {
+          name: game.name,
+          background_image: game.background_image,
+          id: game.id,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      alert(response.data.message);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,7 +46,6 @@ const Game = () => {
         );
         console.log(gameResponse.data);
         setGame(gameResponse.data);
-        // setIsLoading(false);
       } catch (error) {
         console.log(error.message);
       }
@@ -53,8 +75,21 @@ const Game = () => {
         </section>
         <section className="informations-container">
           <div className="button-container">
-            <button className="game-button">Saved to Collection</button>
-            <button className="game-button">Add a Review</button>
+            <button
+              onClick={() => {
+                addFavorite(game);
+              }}
+              className="game-button"
+            >
+              Saved to Collection
+              <span>
+                <FontAwesomeIcon
+                  icon="bookmark"
+                  // style={{ background: "transparent" }}
+                />
+              </span>
+            </button>
+            <ReviewModal token={token} />
           </div>
           <section className="details-container">
             <section className="flex-section">
@@ -92,6 +127,7 @@ const Game = () => {
           </section>
         </section>
       </section>
+
       {/* Similar Game Section */}
       <section>
         <h2>Games like : {game.name}</h2>

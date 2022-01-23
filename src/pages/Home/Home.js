@@ -22,6 +22,7 @@ const Home = ({ token }) => {
         `http://localhost:4000/add/favorites`,
         {
           name: elem.name,
+          background_image: elem.background_image,
           id: elem.id,
         },
         {
@@ -80,7 +81,6 @@ const Home = ({ token }) => {
             <section key={elem.id} className="games-bloc">
               <button
                 onClick={() => {
-                  console.log("coucou");
                   addFavorite(elem);
                 }}
               >

@@ -1,0 +1,92 @@
+.button-modal {
+  padding: 10px 20px;
+  display: block;
+  margin: 100px auto 0;
+  font-size: 18px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(49, 49, 49, 0.8);
+}
+
+.modal {
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #202023;
+  padding: 14px 28px;
+  width: 700px;
+  height: 400px;
+}
+
+.form {
+  background-color: #414448;
+  width: 680px;
+  border-radius: 5px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  margin: 10px 20px 5px;
+}
+
+form input {
+  height: 40px;
+  margin: 10px 20px;
+  border-radius: 5px;
+  border: none;
+}
+
+form textarea {
+  height: 80px;
+  margin: 5px 20px;
+  border-radius: 5px;
+}
+
+.modal-picture img {
+  object-fit: cover;
+  height: 428px;
+  width: 230px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.location-modal-content {
+  width: 450px;
+}
+
+.close-modal {
+  position: absolute;
+  top: 290px;
+  right: 360px;
+}
+
+.close-modal img {
+  height: 30px;
+  width: 30px;
+}
+
+.publish-button {
+  width: 100px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-self: flex-end;
+  background-color: #ff4655;
+  color: #ffffff;
+}

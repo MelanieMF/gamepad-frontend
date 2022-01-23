@@ -11,7 +11,7 @@ const Header = ({ token, setUser }) => {
   const navigate = useNavigate();
   // ee7acd3aea974d95b29d55f9c60f5960;
   return (
-    <nav className="header">
+    <nav className="header-container">
       <div>
         <img
           src={logo}
@@ -23,7 +23,7 @@ const Header = ({ token, setUser }) => {
       </div>
       <section>
         <button
-          className="nav"
+          className="collection-button header-button"
           onClick={() => {
             navigate("/favoris");
           }}
@@ -33,7 +33,7 @@ const Header = ({ token, setUser }) => {
 
         {token ? (
           <button
-            className="logout"
+            className="log-button header-button"
             onClick={() => {
               setUser(null);
               navigate("/");
@@ -43,7 +43,7 @@ const Header = ({ token, setUser }) => {
           </button>
         ) : (
           <button
-            className="nav"
+            className="log-button header-button"
             onClick={() => {
               navigate("/login");
             }}

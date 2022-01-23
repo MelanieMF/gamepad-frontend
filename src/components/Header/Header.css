@@ -1,15 +1,23 @@
-.header {
+.header-container {
+  margin: 0 2rem auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.nav {
-  position: relative;
+.header-button {
+  color: #ffffff;
+  border: none;
+  text-decoration: none;
+  font-size: 1em;
+  padding: 1rem;
 }
 
-.nav-items {
-  color: #ffffff;
-  text-decoration: none;
-  margin: 5px;
+.collection-button {
+  background: none;
+}
+
+.log-button {
+  background-color: #ff4655;
+  border-radius: 5px;
 }
