@@ -5,19 +5,13 @@
   align-items: center;
 }
 
-.header-button {
-  color: #ffffff;
-  border: none;
-  text-decoration: none;
-  font-size: 1em;
-  padding: 1rem;
+.header-logo {
+  height: 5rem;
 }
 
-.collection-button {
-  background: none;
-}
-
-.log-button {
+.line {
+  width: 100vw;
+  height: 0.1vh;
   background-color: #ff4655;
-  border-radius: 5px;
+  margin-bottom: 3rem;
 }

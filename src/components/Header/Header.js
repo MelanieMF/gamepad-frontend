@@ -9,49 +9,52 @@ import "./Header.css";
 
 const Header = ({ token, setUser }) => {
   const navigate = useNavigate();
-  // ee7acd3aea974d95b29d55f9c60f5960;
   return (
-    <nav className="header-container">
-      <div>
-        <img
-          src={logo}
-          alt="logo"
-          onClick={() => {
-            navigate("/");
-          }}
-        />
-      </div>
-      <section>
-        <button
-          className="collection-button header-button"
-          onClick={() => {
-            navigate("/favoris");
-          }}
-        >
-          My collection
-        </button>
-
-        {token ? (
-          <button
-            className="log-button header-button"
+    <nav>
+      <section className="header-container">
+        <div>
+          <img
+            src={logo}
+            alt="logo"
+            className="header-logo"
             onClick={() => {
-              setUser(null);
               navigate("/");
             }}
-          >
-            Logout
-          </button>
-        ) : (
+          />
+        </div>
+        <section>
           <button
-            className="log-button header-button"
+            className="collection-button header-button"
             onClick={() => {
-              navigate("/login");
+              navigate("/favoris");
             }}
           >
-            Login
+            My collection
           </button>
-        )}
+
+          {token ? (
+            <button
+              className="log-button header-button"
+              onClick={() => {
+                setUser(null);
+                navigate("/");
+              }}
+            >
+              Logout
+            </button>
+          ) : (
+            <button
+              className="log-button header-button"
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              Login
+            </button>
+          )}
+        </section>
       </section>
+      <div className="line"></div>
     </nav>
   );
 };

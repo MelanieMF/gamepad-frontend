@@ -1,0 +1,17 @@
+.header-button {
+  color: #ffffff;
+  border: none;
+  text-decoration: none;
+  font-size: 1em;
+  margin: 0.8rem;
+}
+
+.collection-button {
+  background: none;
+}
+
+.log-button {
+  background-color: #ff4655;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+}

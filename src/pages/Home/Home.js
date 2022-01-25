@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Internes
-// import logo from "../../assets/img/logo.png";
+import Filters from "../../components/Filters/Filters";
 
 // Styles & CSS
 import "./Home.css";
@@ -13,7 +13,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Home = ({ token }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [platforms, setPlatforms] = useState();
   const [searchGame, setSearchGame] = useState("");
+  const [platformType, setPlatformType] = useState();
+  const [sortby, setSortBy] = useState();
   const navigate = useNavigate();
 
   const addFavorite = async (elem) => {
@@ -39,16 +42,37 @@ const Home = ({ token }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          // "https://api.rawg.io/api/games?key=ee7acd3aea974d95b29d55f9c60f5960&name=${searchGame}"
-          `http://localhost:4000/?search=${searchGame}`
-        );
-        setData(response.data);
-        console.log(response.data);
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error.message);
+      if (platformType !== undefined) {
+        try {
+          const response = await axios.get(
+            // "https://api.rawg.io/api/games?key=ee7acd3aea974d95b29d55f9c60f5960&name=${searchGame}"
+            `http://localhost:4000/?platforms=${platforms}`
+          );
+          setPlatforms(response.data);
+          console.log(response.data);
+          setIsLoading(false);
+        } catch (error) {
+          console.log(error.message);
+        }
+        try {
+          const response = await axios.get("http://localhost:4000/?platforms");
+          setPlatforms(response.data);
+          setIsLoading(false);
+        } catch (error) {
+          console.log(error.message);
+        }
+      } else {
+        try {
+          const response = await axios.get(
+            // "https://api.rawg.io/api/games?key=ee7acd3aea974d95b29d55f9c60f5960&name=${searchGame}"
+            `http://localhost:4000/?search=${searchGame}`
+          );
+          setData(response.data);
+          console.log(response.data);
+          setIsLoading(false);
+        } catch (error) {
+          console.log(error.message);
+        }
       }
     };
     fetchData();
@@ -58,46 +82,73 @@ const Home = ({ token }) => {
     <div>En cours de chargement</div>
   ) : (
     <main>
-      <section className="search-bar">
-        {/* <div>
-          <img
-            src={logo}
-            alt="logo"
-            onClick={() => {
-              navigate("/");
-            }}
-          />
-        </div> */}
-        <FontAwesomeIcon icon="search" className="search-input-icon" />
+      {/* Searchbar */}
+
+      <section className="searchbar-container">
         <input
           type="search"
+          className="search-bar"
           placeholder=" Search for a game"
           onChange={(event) => setSearchGame(event.target.value)}
         />
+        <FontAwesomeIcon icon="search" className="search-input-icon" />
       </section>
-      <section className="games-container">
-        {data.results.map((elem) => {
-          return (
-            <section key={elem.id} className="games-bloc">
-              <button
-                onClick={() => {
-                  addFavorite(elem);
-                }}
-              >
-                <FontAwesomeIcon icon="heart" />
-              </button>
-              <article
-                onClick={() => {
-                  navigate(`/games/${elem.id}`);
-                }}
-                className="games-item"
-              >
-                <img src={elem.background_image} alt="couverture du jeu" />
-                <h1>{elem.name}</h1>
-              </article>
-            </section>
-          );
-        })}
+
+      {/* Filters */}
+      <Filters
+        platforms={platforms}
+        setplatformType={setPlatformType}
+        setSortBy={setSortBy}
+      />
+      <section className="games-section-container">
+        {/* <h1>Most Relevance Games</h1> */}
+        <div className="games-container">
+          {data.results.map((elem) => {
+            return (
+              <section key={elem.id} className="games-bloc">
+                <article className="games-item">
+                  <img
+                    src={elem.background_image}
+                    alt="couverture du jeu"
+                    onClick={() => {
+                      navigate(`/games/${elem.id}`);
+                    }}
+                  />
+                  <div className="game-picture-shadow">
+                    <div className="title-game">
+                      <h2
+                        onClick={() => {
+                          navigate(`/games/${elem.id}`);
+                        }}
+                      >
+                        {elem.name}
+                      </h2>
+                      {token ? (
+                        <button
+                          className="bookmark-button"
+                          onClick={() => {
+                            addFavorite(elem);
+                          }}
+                        >
+                          <FontAwesomeIcon icon="bookmark" />
+                        </button>
+                      ) : (
+                        <button
+                          className="bookmark-button"
+                          onClick={() => {
+                            navigate("/login");
+                          }}
+                        >
+                          <FontAwesomeIcon icon="bookmark" />
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </article>
+              </section>
+            );
+          })}
+        </div>
       </section>
     </main>
   );

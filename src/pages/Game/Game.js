@@ -139,8 +139,7 @@ const Game = ({ token }) => {
                   src={similarGames.background_image}
                   alt="couverture du jeu"
                 />
-                <div className="similar-game-picture-shadowone"></div>
-                <div className="similar-game-picture-shadowtwo"></div>
+                <div className="similar-game-picture-shadow"></div>
                 <div className="title-similar-game">
                   <h3>{similarGames.name}</h3>
                 </div>
