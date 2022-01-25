@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Internes
-import Filters from "../../components/Filters/Filters";
+// import Filters from "../../components/Filters/Filters";
 
 // Styles & CSS
 import "./Home.css";
@@ -45,18 +45,21 @@ const Home = ({ token }) => {
       if (platformType !== undefined) {
         try {
           const response = await axios.get(
-            // "https://api.rawg.io/api/games?key=ee7acd3aea974d95b29d55f9c60f5960&name=${searchGame}"
-            `http://localhost:4000/?platforms=${platforms}`
+            // `http://localhost:4000/?platforms=${platforms}`
+            `https://api.rawg.io/api/games/?key=ee7acd3aea974d95b29d55f9c60f5960&platformType=${platformType}`
           );
-          setPlatforms(response.data);
+          setData(response.data);
           console.log(response.data);
-          setIsLoading(false);
+          // setIsLoading(false);
         } catch (error) {
           console.log(error.message);
         }
         try {
-          const response = await axios.get("http://localhost:4000/?platforms");
+          const response = await axios.get(
+            "https://api.rawg.io/api/platforms?key=ee7acd3aea974d95b29d55f9c60f5960"
+          );
           setPlatforms(response.data);
+          console.log(platforms);
           setIsLoading(false);
         } catch (error) {
           console.log(error.message);
@@ -64,11 +67,17 @@ const Home = ({ token }) => {
       } else {
         try {
           const response = await axios.get(
-            // "https://api.rawg.io/api/games?key=ee7acd3aea974d95b29d55f9c60f5960&name=${searchGame}"
+            "https://api.rawg.io/api/platforms?key=ee7acd3aea974d95b29d55f9c60f5960"
+          );
+          setPlatforms(response.data);
+        } catch (error) {
+          console.log(error.message);
+        }
+        try {
+          const response = await axios.get(
             `http://localhost:4000/?search=${searchGame}`
           );
           setData(response.data);
-          console.log(response.data);
           setIsLoading(false);
         } catch (error) {
           console.log(error.message);
@@ -95,11 +104,42 @@ const Home = ({ token }) => {
       </section>
 
       {/* Filters */}
-      <Filters
-        platforms={platforms}
-        setplatformType={setPlatformType}
-        setSortBy={setSortBy}
-      />
+
+      <select
+        onChange={(event) => setPlatformType(event.target.value)}
+        name="Plateform"
+        id="platform-select"
+      >
+        <option value="">Plateform : All</option>
+
+        {platforms.results.map((platform, index) => {
+          return (
+            <option key={index} value={platform.id}>
+              {platform.name}
+            </option>
+          );
+        })}
+      </select>
+
+      <select name="Type" id="type-select">
+        <option value="">Type : All</option>
+        Type
+      </select>
+
+      <select
+        onChange={(event) => setSortBy(event.target.value)}
+        name="Sort by"
+        id="sort-select"
+      >
+        <option value="">Sort by : Default </option>
+        <option value="name">Name</option>
+        <option value="type">Type</option>
+        <option value="released">Released</option>
+        <option value="rating">Rating</option>
+      </select>
+      <button className="filter-button">Go filters !</button>
+
+      {/* Game Containers */}
       <section className="games-section-container">
         {/* <h1>Most Relevance Games</h1> */}
         <div className="games-container">

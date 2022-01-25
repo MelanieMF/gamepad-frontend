@@ -1,0 +1,5 @@
+.favoris-container {
+  display: flex;
+}
+
+/* Le style des cartes est dans le CSS home, le nom de la classe est identique */

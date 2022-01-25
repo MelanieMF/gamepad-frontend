@@ -16,7 +16,7 @@ h3 {
 }
 
 .global-container img {
-  width: 700px;
+  width: 44rem;
   border-radius: 10px;
 }
 
@@ -39,7 +39,7 @@ h3 {
 
 .game-button {
   cursor: pointer;
-  height: 70px;
+  height: 4.5rem;
   background-color: #202023;
   color: #ffffff;
   border: 1px solid #ffffff;
@@ -97,8 +97,8 @@ h3 {
 
 .similar-game-item img {
   object-fit: cover;
-  height: 350px;
-  width: 250px;
+  width: 15rem;
+  height: 19rem;
   border-radius: 5px;
 }
 

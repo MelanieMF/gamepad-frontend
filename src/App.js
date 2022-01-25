@@ -44,7 +44,7 @@ function App() {
           <Route path="/games/:id" element={<Game token={token} />} />
           <Route path="login" element={<Login setUser={setUser} />} />
           <Route path="signup" element={<SignUp setUser={setUser} />} />
-          <Route path="/favoris" element={<Favoris token={token} />} />
+          <Route path="/favorites" element={<Favoris token={token} />} />
         </Routes>
       </Router>
     </div>

@@ -26,7 +26,7 @@ const Header = ({ token, setUser }) => {
           <button
             className="collection-button header-button"
             onClick={() => {
-              navigate("/favoris");
+              navigate("/favorites");
             }}
           >
             My collection
