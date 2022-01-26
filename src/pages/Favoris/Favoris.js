@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 // Internes
+import Loader from "../../components/Loader/Loader";
 
 // Styles & CSS
 import "./Favoris.css";
@@ -51,7 +52,7 @@ const Favoris = ({ token }) => {
   }, [isLoading]);
 
   return isLoading ? (
-    <p>En cours de chargement...</p>
+    <Loader />
   ) : (
     <div className="favoris-container">
       {data.length > 0

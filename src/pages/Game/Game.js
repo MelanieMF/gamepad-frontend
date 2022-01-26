@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 // Internes
+import Loader from "../../components/Loader/Loader";
 
 // CSS
 import "./Game.css";
@@ -65,7 +66,7 @@ const Game = ({ token }) => {
   }, []);
 
   return isLoading ? (
-    <div>En cours de Chargement</div>
+    <Loader />
   ) : (
     <main>
       <h1>{game.name}</h1>

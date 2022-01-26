@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Internes
+import Loader from "../../components/Loader/Loader";
 // import Filters from "../../components/Filters/Filters";
 
 // Styles & CSS
@@ -50,7 +51,6 @@ const Home = ({ token }) => {
           );
           setData(response.data);
           console.log(response.data);
-          // setIsLoading(false);
         } catch (error) {
           console.log(error.message);
         }
@@ -88,7 +88,7 @@ const Home = ({ token }) => {
   }, [searchGame]);
 
   return isLoading ? (
-    <div>En cours de chargement</div>
+    <Loader />
   ) : (
     <main>
       {/* Searchbar */}
