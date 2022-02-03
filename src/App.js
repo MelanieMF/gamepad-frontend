@@ -20,8 +20,18 @@ import {
   faBookmark,
   faCommentAlt,
   faTimes,
+  faThumbsUp,
+  faThumbsDown,
 } from "@fortawesome/free-solid-svg-icons";
-library.add(faSearch, faHeart, faBookmark, faCommentAlt, faTimes);
+library.add(
+  faSearch,
+  faHeart,
+  faBookmark,
+  faCommentAlt,
+  faTimes,
+  faThumbsUp,
+  faThumbsDown
+);
 
 function App() {
   const [token, setToken] = useState(Cookies.get("userToken") || null);

@@ -71,6 +71,7 @@ form textarea {
 }
 
 .close-modal {
+  cursor: pointer;
   position: absolute;
   top: 290px;
   right: 360px;
@@ -82,6 +83,7 @@ form textarea {
 }
 
 .publish-button {
+  cursor: pointer;
   width: 100px;
   height: 40px;
   display: flex;

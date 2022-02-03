@@ -4,25 +4,20 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 
 // Internes
-import Dropzone from "../Dropzone/Dropzone";
 
 // CSS
 import "./SignUp.css";
 
-const SignUp = ({ setUser, token }) => {
-  const [file, setFile] = useState();
+const SignUp = ({ setUser }) => {
+  const [file, setFile] = useState({});
+  const [preview, setPreview] = useState();
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [, setErrorMessage] = useState("");
+  const [error, setError] = useState();
 
   const navigate = useNavigate();
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    fetchData();
-  };
 
   const handleUsername = (event) => {
     const value = event.target.value;
@@ -44,23 +39,39 @@ const SignUp = ({ setUser, token }) => {
     setConfirmPassword(value);
   };
 
-  const fetchData = async () => {
+  // const formData = new FormData();
+  // formData.append("avatar", file);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    console.log(1);
     try {
-      const response = await axios.post("http://localhost:4000/user/signup", {
-        username: username,
-        email: email,
-        password: password,
-      });
+      console.log(2);
+
+      const formData = new FormData();
+      formData.append("email", email);
+      formData.append("username", username);
+      formData.append("avatar", file);
+      formData.append("password", password);
+      formData.append("confirmPassword", confirmPassword);
+      console.log(3);
+
+      const response = await axios.post(
+        "http://localhost:4000/user/signup",
+        formData
+      );
+      console.log(4);
+
+      setError(response.data.errorMessage);
       if (response.data.token) {
         setUser(response.data.token);
         navigate("/");
       }
+      console.log(5);
     } catch (error) {
-      console.log(error.reponse);
+      alert(error.message);
       console.log(error.message);
-      if (error.reponse.status === 409) {
-        setErrorMessage("Cet email a déjà un compte");
-      }
     }
   };
 
@@ -112,17 +123,39 @@ const SignUp = ({ setUser, token }) => {
               value={confirmPassword}
             />
           </div>
-          <div className="add-picture-button">
-            {/* <input
-              type="file"
-              multiple={true}
-              onChange={(event) => {
-                setFile(event.target.files[0]);
-              }} 
-            /> */}
-            <Dropzone setFile={setFile} file={file} />
-          </div>
-          <div>
+          <div className="add-avatar-button">
+            <div className="file-select">
+              {preview ? (
+                <div className="dashed-preview-image">
+                  <img src={preview} alt="pré-visualisation" />
+                  <div
+                    className="remove-img-button"
+                    onClick={() => {
+                      setPreview("");
+                    }}
+                  >
+                    X
+                  </div>
+                </div>
+              ) : (
+                <div className="dashed-preview-without">
+                  <div className="input-design-default">
+                    <input
+                      id="file"
+                      type="file"
+                      className="input-file"
+                      onChange={(event) => {
+                        setFile(event.target.files[0]);
+                        const file = URL.createObjectURL(event.target.files[0]);
+                        setPreview(file);
+                        console.log("file uploaded");
+                      }}
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+
             <input type="submit" value="Connexion" className="connexion" />
           </div>
         </form>

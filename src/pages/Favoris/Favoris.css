@@ -2,4 +2,8 @@
   display: flex;
 }
 
+.favoris-container {
+  justify-content: center;
+}
+
 /* Le style des cartes est dans le CSS home, le nom de la classe est identique */

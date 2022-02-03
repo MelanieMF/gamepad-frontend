@@ -4,9 +4,6 @@ import axios from "axios";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-// Internes
-import icon from "../../assets/img/icon.png";
-
 // Styles & CSS
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -24,7 +21,7 @@ const ReviewModal = ({ token }) => {
   };
 
   const addReviews = async (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     console.log(token);
     try {
       const response = await axios.post(
@@ -40,9 +37,7 @@ const ReviewModal = ({ token }) => {
           },
         }
       );
-      // console.log(token);
-      // alert(response.data.message);
-      // console.log("sa mère ses morts");
+      console.log(token);
       alert(response.data.message);
     } catch (error) {
       console.log(error.response);
@@ -54,10 +49,7 @@ const ReviewModal = ({ token }) => {
       <button onClick={toggleModal} className="game-button">
         Add a Review
         <span>
-          <FontAwesomeIcon
-            icon="comment-alt"
-            // style={{ background: "transparent" }}
-          />
+          <FontAwesomeIcon icon="comment-alt" />
         </span>
       </button>
       {reviewModal && (
@@ -85,7 +77,7 @@ const ReviewModal = ({ token }) => {
           </div>
 
           <div className="close-modal" onClick={toggleModal}>
-            <img src={icon} alt="close-button" />
+            X
           </div>
         </section>
       )}

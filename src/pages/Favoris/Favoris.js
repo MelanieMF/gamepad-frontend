@@ -55,31 +55,33 @@ const Favoris = ({ token }) => {
     <Loader />
   ) : (
     <div className="favoris-container">
-      {data.length > 0
-        ? data.map((item) => {
-            return (
-              <div key={item.id}>
-                <article className="games-item">
-                  <img src={item.background_image} alt="couverture de jeu" />
-                  <div className="game-picture-shadow">
-                    <div className="title-game">
-                      <h2>{item.name}</h2>
-                      <button
-                        onClick={() => {
-                          delFavorite(item);
-                          setDeleteFav(!deleteFav);
-                          setIsLoading(true);
-                        }}
-                      >
-                        <FontAwesomeIcon icon="bookmark" />
-                      </button>
-                    </div>
+      {data.length > 0 ? (
+        data.map((item) => {
+          return (
+            <div key={item.id}>
+              <article className="games-item">
+                <img src={item.background_image} alt="couverture de jeu" />
+                <div className="game-picture-shadow">
+                  <div className="title-game">
+                    <h2>{item.name}</h2>
+                    <button
+                      onClick={() => {
+                        delFavorite(item);
+                        setDeleteFav(!deleteFav);
+                        setIsLoading(true);
+                      }}
+                    >
+                      <FontAwesomeIcon icon="bookmark" />
+                    </button>
                   </div>
-                </article>
-              </div>
-            );
-          })
-        : "Vous n'avez pas de favoris enregistrés"}
+                </div>
+              </article>
+            </div>
+          );
+        })
+      ) : (
+        <p>You have no saved games in your collection</p>
+      )}
     </div>
   );
 };

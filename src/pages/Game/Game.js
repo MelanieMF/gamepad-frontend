@@ -5,11 +5,12 @@ import { useParams } from "react-router-dom";
 
 // Internes
 import Loader from "../../components/Loader/Loader";
+import ReviewModal from "../../components/ReviewModal/ReviewModal";
 
 // CSS
 import "./Game.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ReviewModal from "../../components/ReviewModal/ReviewModal";
+import Reviews from "../../components/Reviews/Reviews";
 
 const Game = ({ token }) => {
   const [game, setGame] = useState();
@@ -124,7 +125,7 @@ const Game = ({ token }) => {
           </section>
           <section className="game-description">
             <h3>About</h3>
-            <span>{game.description_raw}</span>
+            <p>{game.description_raw}</p>
           </section>
         </section>
       </section>
@@ -148,6 +149,9 @@ const Game = ({ token }) => {
             );
           })}
         </div>
+      </section>
+      <section>
+        <Reviews id={id} token={token} />
       </section>
     </main>
   );

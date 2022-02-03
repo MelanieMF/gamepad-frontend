@@ -17,6 +17,7 @@ const Home = ({ token }) => {
   const [platforms, setPlatforms] = useState();
   const [searchGame, setSearchGame] = useState("");
   const [platformType, setPlatformType] = useState();
+  const [type, setType] = useState();
   const [sortby, setSortBy] = useState();
   const navigate = useNavigate();
 
@@ -105,39 +106,57 @@ const Home = ({ token }) => {
 
       {/* Filters */}
 
-      <select
-        onChange={(event) => setPlatformType(event.target.value)}
-        name="Plateform"
-        id="platform-select"
-      >
-        <option value="">Plateform : All</option>
+      <section className="filters-container">
+        <div>
+          <select
+            onChange={(event) => setPlatformType(event.target.value)}
+            name="Plateform"
+            id="platform-select"
+          >
+            <option value="">Plateform : All</option>
 
-        {platforms.results.map((platform, index) => {
-          return (
-            <option key={index} value={platform.id}>
-              {platform.name}
-            </option>
-          );
-        })}
-      </select>
-
-      <select name="Type" id="type-select">
-        <option value="">Type : All</option>
-        Type
-      </select>
-
-      <select
-        onChange={(event) => setSortBy(event.target.value)}
-        name="Sort by"
-        id="sort-select"
-      >
-        <option value="">Sort by : Default </option>
-        <option value="name">Name</option>
-        <option value="type">Type</option>
-        <option value="released">Released</option>
-        <option value="rating">Rating</option>
-      </select>
-      <button className="filter-button">Go filters !</button>
+            {platforms.results.map((platform, index) => {
+              return (
+                <option key={index} value={platform.id}>
+                  {platform.name}
+                </option>
+              );
+            })}
+          </select>
+          <select
+            onChange={(event) => setType(event.target.value)}
+            name="Type"
+            id="type-select"
+          >
+            <option value="">Type : All</option>
+            <option value="">Type :</option>
+            <option value="action">Action</option>
+            <option value="adventure">Adventure</option>
+            <option value="indie">Indie</option>
+            <option value="shooter">Shooter</option>
+            <option value="sports">Sport</option>
+            <option value="racing">Racing</option>
+            <option value="role-playing-games-rpg">RPG</option>
+            <option value="puzzle">Puzzle</option>
+          </select>
+        </div>
+        <div>
+          <select
+            onChange={(event) => setSortBy(event.target.value)}
+            name="Sort by"
+            id="sort-select"
+          >
+            <option value="">Sort by : </option>
+            <option value="name">Name</option>
+            <option value="released">Released</option>
+            <option value="added">Added</option>
+            <option value="created">Created</option>
+            <option value="rating">Rating</option>
+            <option value="metacritic">Metacritic</option>
+          </select>
+          <button className="filter-button">Go filters !</button>
+        </div>
+      </section>
 
       {/* Game Containers */}
       <section className="games-section-container">

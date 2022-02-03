@@ -20,19 +20,21 @@
   height: var(--loader-size);
 }
 
-span {
+.loader span {
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
   width: var(--loader-part-size);
   height: var(--loader-part-size);
+
   background-color: var(--loader-color);
   box-shadow: 0 0 6px var(--loader-shadow-color);
+
   transform-origin: center center;
+
   animation: main 6s ease infinite, fading 6s ease infinite;
 }
-
 span:nth-child(1) {
   --translationValue: calc(var(--loader-part-size) / 4),
     calc(var(--loader-part-size) / 4);
@@ -42,6 +44,7 @@ span:nth-child(1) {
 
   top: 0;
   left: var(--loader-part-size);
+
   animation-delay: 0s, 0.2s;
 }
 
@@ -51,6 +54,7 @@ span:nth-child(2) {
   --translationValueWhenAssebled: 0px, calc(var(--loader-part-size) * -1);
   --translationBeforeDisassembling: calc(var(--loader-part-size) / 4 * -1),
     calc(var(--loader-part-size) / 4 * -1);
+
   top: var(--loader-part-size);
   left: 0;
 }
@@ -61,8 +65,10 @@ span:nth-child(3) {
   --translationValueWhenAssebled: 0px, var(--loader-part-size);
   --translationBeforeDisassembling: calc(var(--loader-part-size) / 4),
     calc(var(--loader-part-size) / 4);
+
   top: var(--loader-part-size);
   right: 0;
+
   animation-delay: 0s, 0.4s;
 }
 
@@ -72,8 +78,10 @@ span:nth-child(4) {
   --translationValueWhenAssebled: calc(var(--loader-part-size) * -1), 0px;
   --translationBeforeDisassembling: calc(var(--loader-part-size) / 4 * -1),
     calc(var(--loader-part-size) / 4);
+
   bottom: 0;
   left: var(--loader-part-size);
+
   animation-delay: 0s, 0.6s;
 }
 
