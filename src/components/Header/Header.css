@@ -3,12 +3,43 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 1.2em;
 }
 
 .header-logo {
   height: 5rem;
   cursor: pointer;
 }
+
+/* BUTTONS */
+
+.header-button {
+  color: #ffffff;
+  border: none;
+  text-decoration: none;
+  font-size: 1em;
+  margin: 0.8rem;
+}
+
+.collection-button {
+  background: none;
+}
+
+.log-button {
+  cursor: pointer;
+  background-color: #ff4655;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+}
+
+.button-modal {
+  padding: 10px 20px;
+  display: block;
+  margin: 100px auto 0;
+  font-size: 18px;
+}
+
+/* USERPROFIL */
 
 .profil-container {
   display: flex;

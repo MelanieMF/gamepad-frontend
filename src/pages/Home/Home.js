@@ -11,7 +11,7 @@ import Loader from "../../components/Loader/Loader";
 import "./Home.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Home = ({ token }) => {
+const Home = ({ token, loginModal }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [platforms, setPlatforms] = useState();

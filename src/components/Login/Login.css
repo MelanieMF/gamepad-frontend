@@ -1,18 +1,120 @@
-.header-button {
-  color: #ffffff;
+.login-overlay {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background-color: rgba(49, 49, 49, 0.8); */
+  border: 1px solid red;
+}
+
+.login-modal {
+  width: 50rem;
+  height: 30rem;
+  display: flex;
+  border: 1px solid green;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #202023;
+  padding: 14px 28px;
+}
+
+.close-loginModal {
+  position: absolute;
+  top: 2rem;
+  left: 3rem;
+}
+
+.close-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.notice-content {
+  width: 21rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 2rem;
+  border-radius: 5px;
+  background: linear-gradient(
+    to top,
+    rgba(23, 23, 23, 1),
+    rgba(32, 32, 32, 1),
+    rgba(64, 64, 64, 0.6)
+  );
+}
+
+.notice-content div > p {
+  display: flex;
+  align-items: center;
+}
+
+.notice-content p {
+  margin: 2rem 0;
+}
+
+.notice-content span {
+  margin-right: 1rem;
+}
+
+.login-icons {
+  font-size: 1.3rem;
+}
+
+.red-line {
+  height: 30rem;
+  width: 1px;
+  background-color: #ff4655;
+}
+
+.login-form {
+  border: 1px solid yellow;
+  width: 21rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 2rem;
+  border-radius: 5px;
+  background: linear-gradient(
+    to bottom,
+    rgba(23, 23, 23, 1),
+    rgba(32, 32, 32, 1),
+    rgba(64, 64, 64, 0.6)
+  );
+}
+
+.login-form input {
+  margin: 0.4rem 0;
+  width: 20.5rem;
+  height: 2rem;
   border: none;
-  text-decoration: none;
+  border-radius: 5px;
+}
+
+.login-form p {
+  text-align: center;
+  font-size: 0.8em;
+}
+
+::-webkit-input-placeholder {
+  padding-left: 0.8rem;
+}
+
+.connexion-button {
   font-size: 1em;
-  margin: 0.8rem;
+  background-color: #ff4655;
+  color: #fff;
+}
+
+.signup-navigation {
   cursor: pointer;
 }
 
-.collection-button {
-  background: none;
-}
-
-.log-button {
-  background-color: #ff4655;
-  border-radius: 5px;
-  padding: 0.5rem 1rem;
+.signup-navigation:hover {
+  text-decoration: underline;
 }

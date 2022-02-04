@@ -3,9 +3,9 @@ body {
   background-color: #202023;
   color: #ffffff;
   font-family: "Roboto", sans-serif;
-  font-size: 1.2em;
 }
 
-h2 {
+h2,
+h4 {
   font-weight: 400;
 }

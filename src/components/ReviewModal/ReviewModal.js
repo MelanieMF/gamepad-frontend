@@ -3,6 +3,7 @@ import React from "react";
 import axios from "axios";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 // Styles & CSS
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,6 +14,7 @@ const ReviewModal = ({ token }) => {
   const [reviewModal, setReviewModal] = useState(false);
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
+  const navigate = useNavigate();
 
   const { id } = useParams();
 
@@ -46,18 +48,32 @@ const ReviewModal = ({ token }) => {
 
   return (
     <div>
-      <button onClick={toggleModal} className="game-button">
-        Add a Review
-        <span>
-          <FontAwesomeIcon icon="comment-alt" />
-        </span>
-      </button>
+      {token ? (
+        <button onClick={toggleModal} className="game-button">
+          Add a Review
+          <span>
+            <FontAwesomeIcon icon="comment-alt" />
+          </span>
+        </button>
+      ) : (
+        <button
+          onClick={() => {
+            navigate("/login");
+          }}
+          className="game-button"
+        >
+          Add a Review
+          <span>
+            <FontAwesomeIcon icon="comment-alt" />
+          </span>
+        </button>
+      )}
       {reviewModal && (
-        <section className="overlay">
-          <div className="modal">
-            <section className="modal-content">
+        <section className="write-review-overlay">
+          <div className="write-review-modal">
+            <section className="write-review-content">
               <h2>Write a Review</h2>
-              <div className="form">
+              <div className="write-review">
                 <form onSubmit={(event) => addReviews(event)}>
                   <label htmlFor="cheese">Review title</label>
                   <input
@@ -74,10 +90,9 @@ const ReviewModal = ({ token }) => {
                 </form>
               </div>
             </section>
-          </div>
-
-          <div className="close-modal" onClick={toggleModal}>
-            X
+            <div className="close-write-review" onClick={toggleModal}>
+              X
+            </div>
           </div>
         </section>
       )}

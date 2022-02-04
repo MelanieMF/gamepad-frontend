@@ -9,14 +9,15 @@ h3 {
   margin: 8px 0;
 }
 
-.global-container {
-  border: 1px solid red;
+.game-detail-container {
+  /* border: 1px solid red; */
   display: flex;
-  /* align-items: center; */
+  margin-bottom: 2rem;
 }
 
-.global-container img {
-  width: 44rem;
+.game-detail-container img {
+  height: 25rem;
+  width: 45rem;
   border-radius: 10px;
 }
 
@@ -25,8 +26,8 @@ h3 {
 }
 
 .informations-container {
-  border: 1px solid yellow;
-  margin-left: 30px;
+  /* border: 1px solid yellow; */
+  margin-left: 1.8rem;
 }
 
 .button-container {
@@ -34,7 +35,7 @@ h3 {
 }
 
 .button-container button:last-child {
-  margin-left: 30px;
+  margin-left: 1.8rem;
 }
 
 .game-button {
@@ -52,28 +53,30 @@ h3 {
 }
 
 .details-container {
-  border: 1px solid green;
+  /* border: 1px solid green; */
   display: flex;
+  margin-bottom: 5px;
 }
 
-.flex-section > div {
-  border: 1px solid salmon;
+.details-container span {
+  font-size: 1em;
 }
+
+/* .flex-section > div {
+  border: 1px solid salmon;
+} */
 
 .flex-section > div:first-child {
   width: 330px;
 }
 
-/* span {
-  border: 1px solid red;
-} */
-
 .game-description {
-  border: 1px solid blue;
-  height: 110px;
+  /* border: 1px solid blue; */
+  height: 8.6rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: wrap;
+  overflow-y: scroll;
 }
 
 /* SIMILAR GAMES SECTION */
@@ -83,7 +86,7 @@ h3 {
   display: flex;
   overflow: hidden;
   overflow-x: scroll;
-  /* justify-content: center; */
+  margin-bottom: 2rem;
 }
 
 .similar-game-item {
@@ -92,7 +95,7 @@ h3 {
 
 .similar-game-item:not(:first-child) {
   border: 1px solid green;
-  margin-left: 20px;
+  margin-left: 1.5rem;
 }
 
 .similar-game-item img {
@@ -103,8 +106,8 @@ h3 {
 }
 
 .similar-game-picture-shadow {
-  height: 120px;
-  width: 250px;
+  height: 7.5rem;
+  width: 15.5rem;
   position: absolute;
   left: 0;
   right: 0;
@@ -120,6 +123,6 @@ h3 {
 
 .title-similar-game {
   position: absolute;
-  bottom: 10px;
-  left: 15px;
+  bottom: 0.6rem;
+  left: 0.9rem;
 }

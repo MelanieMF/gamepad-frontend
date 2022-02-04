@@ -2,20 +2,22 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 // Internes
 import Loader from "../../components/Loader/Loader";
 import ReviewModal from "../../components/ReviewModal/ReviewModal";
+import Reviews from "../../components/Reviews/Reviews";
 
-// CSS
+// Styles & CSS
 import "./Game.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Reviews from "../../components/Reviews/Reviews";
 
 const Game = ({ token }) => {
   const [game, setGame] = useState();
   const [similarGames, setSimilarGames] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
   const { id } = useParams();
 
   const addFavorite = async () => {
@@ -71,26 +73,38 @@ const Game = ({ token }) => {
   ) : (
     <main>
       <h1>{game.name}</h1>
-      <section className="global-container">
+      <section className="game-detail-container">
         <section className="picture-container">
           <img src={game.background_image} alt="couverture du jeu" />
         </section>
         <section className="informations-container">
           <div className="button-container">
-            <button
-              onClick={() => {
-                addFavorite(game);
-              }}
-              className="game-button"
-            >
-              Saved to Collection
-              <span>
-                <FontAwesomeIcon
-                  icon="bookmark"
-                  // style={{ background: "transparent" }}
-                />
-              </span>
-            </button>
+            {token ? (
+              <button
+                onClick={() => {
+                  addFavorite(game);
+                }}
+                className="game-button"
+              >
+                Saved to Collection
+                <span>
+                  <FontAwesomeIcon icon="bookmark" />
+                </span>
+              </button>
+            ) : (
+              <button
+                onClick={() => {
+                  navigate("/login");
+                }}
+                className="game-button"
+              >
+                Saved to Collection
+                <span>
+                  <FontAwesomeIcon icon="bookmark" />
+                </span>
+              </button>
+            )}
+            {/* {token ? <ReviewModal token={token} /> : navigate("/login")} */}
             <ReviewModal token={token} />
           </div>
           <section className="details-container">
@@ -104,7 +118,7 @@ const Game = ({ token }) => {
                 <span>{game.released}</span>
                 <h3>Publisher</h3>
                 {game.publishers.map((publishers, index) => {
-                  return <p key={index}>{publishers.name}</p>;
+                  return <span key={index}>{publishers.name}</span>;
                 })}
               </div>
             </section>

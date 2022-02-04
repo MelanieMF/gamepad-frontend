@@ -5,7 +5,7 @@
   font-size: 18px;
 }
 
-.overlay {
+.write-review-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -14,7 +14,7 @@
   background-color: rgba(49, 49, 49, 0.8);
 }
 
-.modal {
+.write-review-modal {
   border-radius: 10px;
   position: absolute;
   top: 50%;
@@ -26,60 +26,33 @@
   height: 400px;
 }
 
-.form {
+.write-review {
   background-color: #414448;
   width: 680px;
   border-radius: 5px;
 }
 
-form {
+.write-review form {
   display: flex;
   flex-direction: column;
 }
 
-form label {
+.write-review form label {
   margin: 10px 20px 5px;
 }
 
-form input {
+.write-review form input {
   height: 40px;
   margin: 10px 20px;
   border-radius: 5px;
   border: none;
 }
 
-form textarea {
+.write-review form textarea {
   height: 80px;
   margin: 5px 20px;
   border-radius: 5px;
-}
-
-.modal-picture img {
-  object-fit: cover;
-  height: 428px;
-  width: 230px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-}
-
-.location-modal-content {
-  width: 450px;
-}
-
-.close-modal {
-  cursor: pointer;
-  position: absolute;
-  top: 290px;
-  right: 360px;
-}
-
-.close-modal img {
-  height: 30px;
-  width: 30px;
+  font-family: "Arial";
 }
 
 .publish-button {
@@ -88,7 +61,17 @@ form textarea {
   height: 40px;
   display: flex;
   justify-content: center;
+  border: none;
+  border-radius: 5px;
   align-self: flex-end;
   background-color: #ff4655;
   color: #ffffff;
+}
+
+.close-write-review {
+  cursor: pointer;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 1.5rem;
 }

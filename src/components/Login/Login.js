@@ -4,9 +4,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 
 // Internes
+import closeIcon from "../../assets/img/icon-removebg.png";
 
-// CSS
+// Styles & CSS
 import "./Login.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Login = ({ setUser }) => {
   const [email, setEmail] = useState("");
@@ -46,47 +48,81 @@ const Login = ({ setUser }) => {
 
   return (
     <div>
-      <section>
-        <h2>How it works ?</h2>
-        <div>
-          <p>
-            Log in to your free account to be able to get all features of
-            GamePad
-          </p>
-          <p>Add a game to your collection</p>
-          <p>Leave a review for a game</p>
-        </div>
-      </section>
-      <section className="form signup-form">
-        <h2>Login</h2>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <input
-              onChange={handleEmail}
-              placeholder="Email"
-              type="email"
-              value={email}
-            />
-          </div>
-          <div>
-            <input
-              onChange={handlePassword}
-              placeholder="Password"
-              type="password"
-              value={password}
-            />
-          </div>
-          <div>
-            <input type="submit" value="Connexion" className="connexion" />
-          </div>
-          <p
+      <section className="login-overlay">
+        <div className="login-modal">
+          <div
+            className="close-loginModal"
             onClick={() => {
-              navigate("/signup");
+              navigate("/");
             }}
           >
-            Don't have an account yet ?
-          </p>
-        </form>
+            <img
+              src={closeIcon}
+              alt="close window icon"
+              className="close-icon"
+              onClick={() => {
+                navigate("/");
+              }}
+            />
+          </div>
+          <section className="notice-content">
+            <h2>How it works ?</h2>
+            <div>
+              <p className="login-align">
+                <span>
+                  <FontAwesomeIcon icon="user" className="login-icons" />
+                </span>
+                <span>
+                  Log in to your free account to be able to get all features of
+                  GamePad
+                </span>
+              </p>
+              <p>
+                <span>
+                  <FontAwesomeIcon icon="bookmark" className="login-icons" />
+                </span>
+                <span>Add a game to your collection</span>
+              </p>
+              <p>
+                <span>
+                  <FontAwesomeIcon icon="comment-alt" className="login-icons" />
+                </span>
+                <span>Leave a review for a game</span>
+              </p>
+            </div>
+          </section>
+          <div className="red-line"></div>
+          <section className="login-form">
+            <h2>Login</h2>
+            <form onSubmit={handleSubmit}>
+              <input
+                onChange={handleEmail}
+                placeholder="Email..."
+                type="email"
+                value={email}
+              />
+              <input
+                onChange={handlePassword}
+                placeholder="Password..."
+                type="password"
+                value={password}
+              />
+              <input
+                type="submit"
+                value="Connexion"
+                className="connexion-button"
+              />
+              <p
+                onClick={() => {
+                  navigate("/signup");
+                }}
+                className="signup-navigation"
+              >
+                Don't have an account yet ?
+              </p>
+            </form>
+          </section>
+        </div>
       </section>
     </div>
   );

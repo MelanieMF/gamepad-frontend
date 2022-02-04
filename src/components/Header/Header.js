@@ -11,17 +11,20 @@ import "./Header.css";
 
 const Header = ({ token, setUser }) => {
   const [data, setData] = useState();
+  const [loginModal, setLoginModal] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/profil", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setData(response.data);
+        if (token) {
+          const response = await axios.get("http://localhost:4000/profil", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          setData(response.data);
+        }
       } catch (error) {
         console.log(error.message);
       }

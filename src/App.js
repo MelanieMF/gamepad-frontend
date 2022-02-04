@@ -16,21 +16,21 @@ import "./App.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faSearch,
-  faHeart,
   faBookmark,
   faCommentAlt,
   faTimes,
   faThumbsUp,
   faThumbsDown,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 library.add(
   faSearch,
-  faHeart,
   faBookmark,
   faCommentAlt,
   faTimes,
   faThumbsUp,
-  faThumbsDown
+  faThumbsDown,
+  faUser
 );
 
 function App() {

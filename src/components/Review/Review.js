@@ -16,7 +16,7 @@ const Review = ({
     <section key={index} className="reviews-container">
       <article className="review-container">
         <div className="user-infos">
-          <img src={data[0].avatar} alt="" />
+          <img src={data[0].avatar} alt="user avatar" />
           <p>{data[0].username} </p>
         </div>
         <div className="review-infos">
