@@ -7,9 +7,10 @@ import Cookies from "js-cookie";
 import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
 import Game from "./pages/Game/Game";
-import SignUp from "./components/SignUp/SignUp";
-import Login from "./components/Login/Login";
+import SignUp from "./pages/Signup/Signup";
+import Login from "./pages/Login/Login";
 import Favoris from "./pages/Favoris/Favoris";
+import Footer from "./components/Footer/Footer";
 
 // Styles & CSS
 import "./App.css";
@@ -52,10 +53,17 @@ function App() {
         <Routes>
           <Route path="/" element={<Home token={token} />} />
           <Route path="/games/:id" element={<Game token={token} />} />
-          <Route path="login" element={<Login setUser={setUser} />} />
-          <Route path="signup" element={<SignUp setUser={setUser} />} />
+          <Route
+            path="/login"
+            element={<Login setUser={setUser} token={token} />}
+          />
+          <Route
+            path="/signup"
+            element={<SignUp setUser={setUser} token={token} />}
+          />
           <Route path="/favorites" element={<Favoris token={token} />} />
         </Routes>
+        <Footer />
       </Router>
     </div>
   );

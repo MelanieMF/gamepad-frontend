@@ -65,11 +65,13 @@ const Favoris = ({ token }) => {
                   <div className="title-game">
                     <h2>{item.name}</h2>
                     <button
+                      className="bookmark-button"
                       onClick={() => {
                         delFavorite(item);
                         setDeleteFav(!deleteFav);
                         setIsLoading(true);
                       }}
+                      // Setdeletfav = true ? Si oui style = rouge, si non on laisse
                     >
                       <FontAwesomeIcon icon="bookmark" />
                     </button>
@@ -80,7 +82,9 @@ const Favoris = ({ token }) => {
           );
         })
       ) : (
-        <p>You have no saved games in your collection</p>
+        <div className="nogame-container">
+          <p>You have no saved games in your collection</p>
+        </div>
       )}
     </div>
   );

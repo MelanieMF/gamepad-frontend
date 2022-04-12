@@ -6,4 +6,8 @@
   justify-content: center;
 }
 
+.nogame-container {
+  height: 75vh;
+}
+
 /* Le style des cartes est dans le CSS home, le nom de la classe est identique */

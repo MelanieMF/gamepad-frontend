@@ -7,10 +7,10 @@ import { useNavigate } from "react-router";
 import closeIcon from "../../assets/img/icon-removebg.png";
 
 // Styles & CSS
-import "./SignUp.css";
+import "./Signup.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const SignUp = ({ setUser }) => {
+const Signup = ({ setUser }) => {
   const [file, setFile] = useState({});
   const [preview, setPreview] = useState();
   const [username, setUserName] = useState("");
@@ -185,4 +185,4 @@ const SignUp = ({ setUser }) => {
   );
 };
 
-export default SignUp;
+export default Signup;

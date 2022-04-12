@@ -47,7 +47,7 @@ const Login = ({ setUser }) => {
   };
 
   return (
-    <div>
+    <div className="login-container">
       <section className="login-overlay">
         <div className="login-modal">
           <div

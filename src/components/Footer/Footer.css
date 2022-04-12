@@ -1,0 +1,11 @@
+footer {
+  margin: 1.5rem 0 2rem 0;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+}

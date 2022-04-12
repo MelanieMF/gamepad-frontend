@@ -56,7 +56,7 @@ const Game = ({ token }) => {
       try {
         const similarGamesResponse = await axios.get(
           // `https://api.rawg.io/api/games/${id}/game-series?key=ee7acd3aea974d95b29d55f9c60f5960`
-          "http://localhost:4000/games/3498/similar-games"
+          `http://localhost:4000/games/${id}/similar-games`
         );
         console.log(similarGamesResponse.data);
         setSimilarGames(similarGamesResponse.data);
@@ -104,36 +104,39 @@ const Game = ({ token }) => {
                 </span>
               </button>
             )}
-            {/* {token ? <ReviewModal token={token} /> : navigate("/login")} */}
             <ReviewModal token={token} />
           </div>
           <section className="details-container">
             <section className="flex-section">
               <div>
                 <h3>Platforms</h3>
-                {game.platforms.map((platforms, index) => {
-                  return <span key={index}>{platforms.platform.name}, </span>;
-                })}
+                {game &&
+                  game.platforms.map((platforms, index) => {
+                    return <span key={index}>{platforms.platform.name}, </span>;
+                  })}
                 <h3> Released date</h3>
-                <span>{game.released}</span>
+                <span>{game && game.released}</span>
                 <h3>Publisher</h3>
-                {game.publishers.map((publishers, index) => {
-                  return <span key={index}>{publishers.name}</span>;
-                })}
+                {game &&
+                  game.publishers.map((publishers, index) => {
+                    return <span key={index}>{publishers.name}</span>;
+                  })}
               </div>
             </section>
             <section className="flex-section">
               <div className="flex">
                 <h3>Genre</h3>
-                {game.genres.map((genres, index) => {
-                  return <span key={index}>{genres.name}, </span>;
-                })}
+                {game &&
+                  game.genres.map((genres, index) => {
+                    return <span key={index}>{genres.name}, </span>;
+                  })}
                 <h3>Developer</h3>
-                {game.developers.map((developers, index) => {
-                  return <span key={index}>{developers.name}</span>;
-                })}
+                {game &&
+                  game.developers.map((developers, index) => {
+                    return <span key={index}>{developers.name}</span>;
+                  })}
                 <h3>Age rating</h3>
-                <span>{game.esrb_rating.name}</span>
+                <span>{game && game.metacritic_url}</span>
               </div>
             </section>
           </section>
@@ -150,7 +153,13 @@ const Game = ({ token }) => {
         <div className="similar-game-container">
           {similarGames.results.map((similarGames, index) => {
             return (
-              <article key={index} className="similar-game-item">
+              <article
+                onClick={() => {
+                  navigate(`/games/${similarGames.id}`);
+                }}
+                key={index}
+                className="similar-game-item"
+              >
                 <img
                   src={similarGames.background_image}
                   alt="couverture du jeu"

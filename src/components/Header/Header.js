@@ -11,7 +11,6 @@ import "./Header.css";
 
 const Header = ({ token, setUser }) => {
   const [data, setData] = useState();
-  const [loginModal, setLoginModal] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -65,7 +64,7 @@ const Header = ({ token, setUser }) => {
               >
                 My collection
               </button>
-              <p> Welcome, {data && data[0].username} </p>
+              Welcome, {data && data[0].username}
               <img
                 className="avatar"
                 src={data && data[0].avatar.secure_url}
